@@ -1,9 +1,20 @@
-import './App.css';
+import "./App.css";
+import {
+  SignUp,
+  Navbar,
+  Success,
+  WorkSpaceDetails,
+  WorkspaceFor,
+} from "./components/index";
 
 function App() {
   return (
     <div className="App">
-      Hello world!
+      <Navbar />
+      <SignUp />
+      <WorkSpaceDetails />
+      <WorkspaceFor />
+      <Success />
     </div>
   );
 }
