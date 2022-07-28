@@ -1,7 +1,10 @@
 import { RiTeamFill } from "react-icons/ri";
 import { BsFillPersonFill } from "react-icons/bs";
+import { useDetailContext } from "../context/DetailContext";
 
-export default function WorkspaceFor() {
+export default function WorkspaceFor({ nextStep }) {
+  const { state, dispatch } = useDetailContext();
+
   return (
     <main>
       <section className="form-section">
@@ -13,7 +16,15 @@ export default function WorkspaceFor() {
         </div>
         <form>
           <section className="workspace-option">
-            <div>
+            <div
+              onClick={(e) =>
+                dispatch({
+                  type: "UPDATE_WORKSPACE_FOR",
+                  payload: e.target.value,
+                })
+              }
+              value={state.workspaceFor}
+            >
               <BsFillPersonFill className="icon-option" />
               <p>
                 <b>For myself</b>
@@ -22,7 +33,15 @@ export default function WorkspaceFor() {
                 Write better. Think more clearly. Stay organized.
               </p>
             </div>
-            <div>
+            <div
+              onClick={(e) =>
+                dispatch({
+                  type: "UPDATE_WORKSPACE_FOR",
+                  payload: e.target.value,
+                })
+              }
+              value={state.workspaceFor}
+            >
               <RiTeamFill className="icon-option" />
               <p>
                 <b>With my team</b>
@@ -32,7 +51,14 @@ export default function WorkspaceFor() {
               </p>
             </div>
           </section>
-          <button>Create Workspace</button>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              nextStep();
+            }}
+          >
+            Create Workspace
+          </button>
         </form>
       </section>
     </main>

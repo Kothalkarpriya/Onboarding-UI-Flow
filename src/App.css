@@ -113,7 +113,7 @@ p {
   border-color: var(--viole-color);
 }
 
-.workspace-option div:hover .icon-option {
+.workspace-option div:hover .icon-option, .workspace-option div:active .icon-option {
   color: var(--viole-color);
 }
 

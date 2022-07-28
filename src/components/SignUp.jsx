@@ -1,4 +1,8 @@
-export default function SignUp() {
+import { useDetailContext } from "../context/DetailContext";
+
+export default function SignUp({ nextStep }) {
+  const { state, dispatch } = useDetailContext();
+
   return (
     <main>
       <section className="form-section">
@@ -9,14 +13,43 @@ export default function SignUp() {
         <form>
           <div>
             <label>Full Name</label>
-            <input placeholder="Steve Jobs" required/>
+            <input
+              placeholder="Steve Jobs"
+              name="fullName"
+              onChange={(e) =>
+                dispatch({
+                  type: "UPDATE_FULLNAME",
+                  payload: e.target.value,
+                })
+              }
+              value={state.fullName}
+              required
+            />
           </div>
           <div>
             <label>Display Name</label>
-            <input placeholder="Steve" required/>
+            <input
+              placeholder="Steve"
+              name="displayName"
+              onChange={(e) =>
+                dispatch({
+                  type: "UPDATE_DISPLAY_NAME",
+                  payload: e.target.value,
+                })
+              }
+              value={state.displayName}
+              required
+            />
           </div>
 
-          <button>Create Workspace</button>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              nextStep();
+            }}
+          >
+            Create Workspace
+          </button>
         </form>
       </section>
     </main>

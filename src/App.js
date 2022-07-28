@@ -1,20 +1,14 @@
 import "./App.css";
-import {
-  SignUp,
-  Navbar,
-  Success,
-  WorkSpaceDetails,
-  WorkspaceFor,
-} from "./components/index";
+import { Form, Navbar } from "./components/index";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
       <Navbar />
-      <SignUp />
-      <WorkSpaceDetails />
-      <WorkspaceFor />
-      <Success />
+      <Routes>
+        <Route path="/" element={<Form />} />
+      </Routes>
     </div>
   );
 }
